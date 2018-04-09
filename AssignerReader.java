@@ -28,10 +28,29 @@ public class AssignerReader {
 		}
 		return periodsAbsent;
 	}
-	public ArrayList<ArrayList<Period>> absentPeriodsList(String periodNames[])
+	
+	public ArrayList<AbsentPeriod> [] absentPeriodsList(String periodNames[])
 	{
-		ArrayList<ArrayList<Period>> absent=new ArrayList<ArrayList<Period>>();
-		ArrayList<String> periodData;
+		ArrayList<AbsentPeriod> [] absents=(ArrayList<AbsentPeriod>[]) new ArrayList[6];
 		
+		for(int i=0; i<absents.length; i++)
+		{
+			absents[i]=new ArrayList<AbsentPeriod>();
+		}
+		
+		ArrayList<String> teachers=reader.readField("Name");
+		ArrayList<String> periodData=new ArrayList<String>();
+		for(int i=1; i<teachers.size(); i++)
+		{
+			periodData=reader.readRow(teachers.get(i));
+			for(int j=1; j<periodData.size(); j++)
+			{
+				if(periodData.get(j).equals("X")||periodData.get(j).equals("x"))
+				{
+					absents[j-1].add(new AbsentPeriod(teachers.get(i),periodNames[j-1],"Absent"));
+				}
+			}
+		}
+		return absents;
 	}
 }

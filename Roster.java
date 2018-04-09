@@ -8,6 +8,7 @@ public class Roster {
 	public void addTeacher(Teacher t) {teacherList.add(t);}
 	public Teacher getTeacher(int index) {return teacherList.get(index);}
 	public int size() {return teacherList.size();}
+	
 	public String toString()
 	{
 		String printer="";

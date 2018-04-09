@@ -5,40 +5,73 @@ import java.util.Arrays;
 
 public class Assigner {
 	
-	private int absentPeriods[]=new int[6];
-	private ArrayList<ArrayList<Period>> absent=new ArrayList<ArrayList<Period>>();
+	private ArrayList<AbsentPeriod> [] absent=(ArrayList<AbsentPeriod>[]) new ArrayList[6];
 	private static final String[] PeriodNames= {"P1","P2","P3a","P3b","P4","P5"};
-	private Roster availableTeachers;
+	private ArrayList<OnCaller> remainder=new ArrayList<OnCaller>();
+	private ArrayList<Teacher> priority=new ArrayList<Teacher>();
 	
 	public Assigner()
 	{
 		AssignerReader reader=new AssignerReader("data/CS2033template.xlsx","Week");
+		absent=reader.absentPeriodsList(PeriodNames);
 	}
 	
-	public Assigner(Roster r)
+	public void Assignment()
 	{
-		availableTeachers = r;
-		AssignerReader reader=new AssignerReader("data/CS2033template.xlsx","Week");
-		absentPeriods=reader.absentPeriods(PeriodNames);
+		ArrayList<Teacher> subPriority=new ArrayList<Teacher>();
+		ArrayList<OnCaller> subRem=new ArrayList<OnCaller>();
 		
-	}
-	
-	private void assignTeacher() {
-		for(int i = 0; i<availableTeachers.size();i++) {
-			Teacher currentTeacher = availableTeachers.getTeacher(i);
-			for(int j = 0; j<PeriodNames.length; j++) {
-				if(currentTeacher.isFreePeriod(PeriodNames[j])) {
-					for(int k = 0; k<availableTeachers.size();k++) {
-						if availableTeachers.
-					}
-				}
+		for(int i=0; i<PeriodNames.length; i++)
+		{
+			if(!(absent[i].isEmpty()))
+			{
+				//subPriority=freeTeacher(priority,i);
+				subRem=freeOnCaller(remainder,i);
 				
+				for(int j=0;j<absent[i].size();j++)
+				{
+				}
 			}
 		}
 	}
 	
+	private ArrayList<Teacher> freeTeacher(ArrayList<Teacher> r1, int check)
+	{
+		ArrayList<Teacher> subr1=new ArrayList<Teacher>();
+		
+		for(int i=0; i<r1.size(); i++)
+		{
+			if(r1.get(i).isFreePeriod(PeriodNames[check])) {
+				subr1.add(r1.get(i));
+			}
+		}
+		
+		return subr1;
+	}
+	
+	private ArrayList<OnCaller> freeOnCaller(ArrayList<OnCaller> r1, int check)
+	{
+		ArrayList<OnCaller> subr1=new ArrayList<OnCaller>();
+		
+		for(int i=0; i<r1.size(); i++)
+		{
+			if(r1.get(i).isFreePeriod(PeriodNames[check])) {
+				subr1.add(r1.get(i));
+			}
+		}
+		
+		return subr1;
+	}
+	
 	public String toString()
 	{
-		return String.format(Arrays.toString(absentPeriods));
+		for(int i=0; i<absent.length; i++)
+		{
+			for(int j=0; j<absent[i].size(); j++)
+			{
+				System.out.println(absent[i].get(j));
+			}
+		}
+		return String.format("\n");
 	}
 }
