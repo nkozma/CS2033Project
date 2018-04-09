@@ -1,9 +1,9 @@
-package project.group2.system.njk;
+package CS2033;
 
 import java.util.ArrayList;
 
 public class Roster {
-	ArrayList<Teacher> teacherList=new ArrayList<Teacher>();
+	private ArrayList<Teacher> teacherList=new ArrayList<Teacher>();
 	
 	public void addTeacher(Teacher t) {teacherList.add(t);}
 	public Teacher getTeacher(int index) {return teacherList.get(index);}

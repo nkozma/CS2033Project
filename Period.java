@@ -1,9 +1,9 @@
-package project.group2.system.njk;
+package CS2033;
 
 public class Period {
-	String normalTeacherName;
-	String periodSection;
-	String className;
+	private String normalTeacherName;
+	private String periodSection;
+	private String className;
 	public Period(String name, String section, String Class)
 	{
 		normalTeacherName=name;

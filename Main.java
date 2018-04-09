@@ -1,4 +1,4 @@
-package project.group2.system.njk;
+package CS2033;
 
 import java.util.ArrayList;
 
@@ -9,6 +9,8 @@ public class Main {
 		//testPeriod("John", "P3a", "SCI3433"); //Period is working as intended
 		//testOnCaller("John"); //OnCaller and its reader are working as intended
 		//testRoster(); //Roster is working properly, needs a method to fill OR a filler
+		Assigner A1= new Assigner();
+		System.out.println(A1);
 	}
 	
 	private static void testTalley(String name)
