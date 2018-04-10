@@ -29,7 +29,7 @@ public class OnCallReader {
 		for(int i=0; i<periodNames.length; i++)
 		{
 		readVal=reader2.read(name, periodNames[i]);
-		if (readVal.equals("x")||readVal.equals("X"))
+		if (!(readVal.equals("P")||readVal.equals("p")))
 		{
 			absent[i]=true;
 		}

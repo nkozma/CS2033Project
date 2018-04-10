@@ -8,9 +8,18 @@ public class Main {
 		//testTalley("Jeffery"); //Talley functioning as intended
 		//testPeriod("John", "P3a", "SCI3433"); //Period is working as intended
 		//testOnCaller("John"); //OnCaller and its reader are working as intended
-		//testRoster(); //Roster is working properly, needs a method to fill OR a filler
-		Assigner A1= new Assigner();
-		System.out.println(A1);
+		testRoster(); //Roster is working properly, needs a method to fill OR a filler
+		System.out.println("------------------------------------------------------------------");
+		ArrayList<Supply> s1=new ArrayList<Supply>();
+		SupplyReader supbro=new SupplyReader("data/CS2033template.xlsx","Week");
+		ArrayList<String> names=supbro.getSupplies();
+		
+		for(int i=0; i<names.size(); i++)
+		{
+			s1.add(new Supply(names.get(i)));
+		}
+		System.out.println("\n---------------------------------\nTeachers who don't work at Colonel Gray:\n---------------------------------\n"+s1);
+		System.out.println(s1.get(0).getTaught().get(1));
 	}
 	
 	private static void testTalley(String name)
