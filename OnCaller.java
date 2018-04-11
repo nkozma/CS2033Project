@@ -32,6 +32,12 @@ public class OnCaller extends Teacher{
 		return free;
 	}
 	
+	public void workCall()
+	{
+		onCallHours.incrementHours();
+		onCallHours.updateHours();
+	}
+	
 	public String toString()
 	{
 		

@@ -1,8 +1,6 @@
 package CS2033;
 
 public class Talley {
-	
-	private TalleyIO IO;
 	private int talleyHours;
 	private String name;
 	private static int maxHours=4;
@@ -11,7 +9,7 @@ public class Talley {
 	
 	public Talley(String name)
 	{
-		IO=new TalleyIO(inputFile, sheetName);
+		TalleyIO IO=new TalleyIO(inputFile, sheetName);
 		this.name=name;
 		talleyHours=IO.findTalley(name);
 	}
@@ -28,6 +26,12 @@ public class Talley {
 	
 	public void updateHours()
 	{
+		TalleyIO IO=new TalleyIO(inputFile, sheetName);
 		IO.updateTalley(name, talleyHours, maxHours-talleyHours);
+	}
+	
+	public String toString()
+	{
+		return String.format("Name:%s , Oncallhoursworked:%d", name, talleyHours);
 	}
 }

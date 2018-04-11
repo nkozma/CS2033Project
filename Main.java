@@ -11,16 +11,20 @@ public class Main {
 		//testRoster(); //Roster is working properly, needs a method to fill OR a filler
 		//testSupply();
 		//testPop();
+		//testAssigner();
 		ArrayList<OnCaller> onCall=new ArrayList<OnCaller>();
 		Ireader fill=new ExcelIO("data/CS2033template.xlsx", "Schedule");
 		ArrayList <String> onCallerNames=fill.readField("Name");
+		
 		for(int i=1; i<onCallerNames.size();i++) {
 		onCall.add(new OnCaller(onCallerNames.get(i)));
 		}
-		//System.out.println(onCall);
-		Assigner a1=new Assigner();
-		ArrayList<OnCaller> free=a1.freeOnCaller(onCall, 5);
-		System.out.println(free);
+		
+		for(int i=0;i<onCall.size(); i++)
+		{
+			onCall.get(i).workCall();
+		}
+		System.out.println("Complete");
 	}
 	
 	private static void testPop()
@@ -86,5 +90,18 @@ public class Main {
 		}
 		System.out.println("\n---------------------------------\nTeachers who don't work at Colonel Gray:\n---------------------------------\n"+s1);
 		System.out.println(s1.get(0).getTaught().get(1));
+	}
+	private static void testAssigner()
+	{
+		ArrayList<OnCaller> onCall=new ArrayList<OnCaller>();
+		Ireader fill=new ExcelIO("data/CS2033template.xlsx", "Schedule");
+		ArrayList <String> onCallerNames=fill.readField("Name");
+		for(int i=1; i<onCallerNames.size();i++) {
+		onCall.add(new OnCaller(onCallerNames.get(i)));
+		}
+		//System.out.println(onCall);
+		Assigner a1=new Assigner();
+		//ArrayList<OnCaller> free=a1.freeOnCaller(onCall, 5);
+		//System.out.println(free);
 	}
 }
