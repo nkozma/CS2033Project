@@ -1,4 +1,4 @@
-package project.group2.system.njk;
+package CS2033;
 
 public interface IProcessor extends Ireader, Iwriter{
 

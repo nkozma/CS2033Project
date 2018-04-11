@@ -1,4 +1,4 @@
-package project.group2.system.njk;
+package CS2033;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -76,6 +76,26 @@ public class ExcelIO implements Iwriter, Ireader, IProcessor {
 			}
 		}
 		return columnVal;
+	}
+	
+	public ArrayList<String> readRow(String name)
+	{
+		ArrayList<String> rowValue=new ArrayList<String>();
+		Row curRow=findRow(name);
+		Iterator<Cell> cellIt=curRow.iterator();
+		while(cellIt.hasNext())
+		{
+			Cell curC=cellIt.next();
+			if(curC.getCellTypeEnum()==CellType.STRING)
+			{
+				rowValue.add(curC.getStringCellValue());
+			}
+			else if(curC.getCellTypeEnum()==CellType.NUMERIC)
+			{
+				rowValue.add(Double.toString(curC.getNumericCellValue()));
+			}
+		}
+		return rowValue;
 	}
 	
 	public void write(String name, String findField, String replacement) 

@@ -1,11 +1,11 @@
-package project.group2.system.njk;
+package CS2033;
 
 import java.util.ArrayList;
 
 public abstract class Teacher {
 	private String id;
 	private ArrayList<Period> periodTaught=new ArrayList<Period>();
-	private String[] PeriodNames= {"P1","P2","P3a","P3b","P4","P5"};
+	private static final String[] PeriodNames= {"P1","P2","P3a","P3b","P4","P5"};
 	
 	public Teacher(String ID)
 	{
@@ -13,6 +13,7 @@ public abstract class Teacher {
 	}
 	
 	public String getID() {return id;}
+	
 	public String[] getPeriodNames() {return PeriodNames;}
 	
 	public void setTaught(ArrayList<Period> p)
