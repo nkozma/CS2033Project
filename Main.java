@@ -8,18 +8,19 @@ public class Main {
 		//testTalley("Jeffery"); //Talley functioning as intended
 		//testPeriod("John", "P3a", "SCI3433"); //Period is working as intended
 		//testOnCaller("John"); //OnCaller and its reader are working as intended
-		testRoster(); //Roster is working properly, needs a method to fill OR a filler
-		System.out.println("------------------------------------------------------------------");
-		ArrayList<Supply> s1=new ArrayList<Supply>();
-		SupplyReader supbro=new SupplyReader("data/CS2033template.xlsx","Week");
-		ArrayList<String> names=supbro.getSupplies();
-		
-		for(int i=0; i<names.size(); i++)
+		//testRoster(); //Roster is working properly, needs a method to fill OR a filler
+		//testSupply();
+		ArrayList<AbsentPeriod> [] absent=(ArrayList<AbsentPeriod>[]) new ArrayList[6];
+		for(int i=0; i<absent.length; i++)
 		{
-			s1.add(new Supply(names.get(i)));
+			absent[i]=new ArrayList<AbsentPeriod>();
 		}
-		System.out.println("\n---------------------------------\nTeachers who don't work at Colonel Gray:\n---------------------------------\n"+s1);
-		System.out.println(s1.get(0).getTaught().get(1));
+		AbsentPeriod p1=new AbsentPeriod("John", "P3a", "Absent");
+		FormPopulator pop=new FormPopulator("data/CS2033template.xlsx", "Week_F");
+		p1.setSub("123");
+		absent[2].add(p1);
+		pop.fillOnCaller(absent);
+		System.out.println("Complete");
 	}
 	
 	private static void testTalley(String name)
@@ -56,5 +57,19 @@ public class Main {
 		r1.addTeacher(new OnCaller(onCallers.get(i)));
 		}
 		System.out.printf("\n---------------------------------\nTeachers who work at Colonel Gray:\n---------------------------------\n"+r1);
+	}
+	
+	private static void testSupply()
+	{
+		ArrayList<Supply> s1=new ArrayList<Supply>();
+		SupplyReader supbro=new SupplyReader("data/CS2033template.xlsx","Week");
+		ArrayList<String> names=supbro.getSupplies();
+		
+		for(int i=0; i<names.size(); i++)
+		{
+			s1.add(new Supply(names.get(i)));
+		}
+		System.out.println("\n---------------------------------\nTeachers who don't work at Colonel Gray:\n---------------------------------\n"+s1);
+		System.out.println(s1.get(0).getTaught().get(1));
 	}
 }

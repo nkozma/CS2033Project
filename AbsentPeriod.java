@@ -10,5 +10,5 @@ public class AbsentPeriod extends Period{
 	}
 	
 	public void setSub(String name) {sub=name;}
-	public String getTeacher() {return sub;}
+	public String getSub() {return sub;}
 }
